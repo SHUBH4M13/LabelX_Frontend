@@ -13,7 +13,7 @@ export default function AnimateBlurText({text , textsize}) {
                     animate={{ filter: "blur(0px)", opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.1 * idx }}
                     key={idx}
-                className={`text-6xl inline-block font-semibold text-gray-800`}>
+                className={`text-3xl sm:text-6xl inline-block font-semibold text-gray-800`}>
                     {letter === " " ? "\u00A0" : letter}
                 </motion.p>
             )}
