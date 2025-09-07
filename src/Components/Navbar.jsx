@@ -4,7 +4,7 @@ import CusButton from './CusButton'
 
 export default function Navbar() {
   return (
-    <div className=' h-[10vh]  bg-white/50 sm:px-20 px-10 flex items-center justify-between border-b border-black/10 shadow-md shadow-black'>
+    <div className=' h-[10vh]  bg-white/50 sm:px-20 px-10 flex items-center justify-between border-b border-white/90 shadow shadow-black/20'>
         <div className=' flex items-center justify-center gap-2 sm:gap-3 '>
             <ScanLine 
             strokeWidth = {3}
