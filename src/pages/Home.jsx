@@ -10,11 +10,11 @@ export default function Home() {
                 <Navbar />
             </div>
 
-            <div className=' flex justify-center h-[90vh] '>
+            <div className=' bg-lightbg flex justify-center h-[90vh] '>
                 <HeroSection />
             </div>
 
-            <div>
+            <div className='bg-lightbg'>
                 <WhyLabelXSection/>
             </div>
             
