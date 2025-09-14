@@ -1,5 +1,5 @@
 import React from 'react'
-import Infoboxes from './infoboxes';
+import DataBox from './DataBox';
 import { AlertTriangle, BarChart, Search } from "lucide-react";
 import { motion } from 'motion/react'
 
@@ -46,7 +46,7 @@ export default function WhyLabelXSection() {
                 className='flex justify-center items-center gap-10 '>
                 {data.map((info, idx) => (
                     <div key={idx}>
-                        <Infoboxes fact={info} />
+                        <DataBox fact={info} />
                     </div>
                 ))}
             </motion.div>

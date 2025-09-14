@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function CusButton({ text, onclick, mode = "dark" }) {
+export default function CusButton({ text, onClick, mode = "dark" }) {
 
   let bgcolor = "primary"
   let textcolor = "white"
@@ -17,7 +17,7 @@ export default function CusButton({ text, onclick, mode = "dark" }) {
 
   return (
     <button
-      onClick={onclick}
+      onClick={onClick}
       className={classes}>
       {text}
     </button >

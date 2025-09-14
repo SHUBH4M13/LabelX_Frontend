@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Infoboxes({fact}) {
+export default function DataBox({fact}) {
     return (
         <div>
             <a 
