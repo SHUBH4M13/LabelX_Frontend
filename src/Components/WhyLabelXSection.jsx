@@ -1,6 +1,7 @@
 import React from 'react'
-import Infoboxes from "./Infoboxes"
+import Infoboxes from './infoboxes';
 import { AlertTriangle, BarChart, Search } from "lucide-react";
+import { motion } from 'motion/react'
 
 export default function WhyLabelXSection() {
 
@@ -9,36 +10,46 @@ export default function WhyLabelXSection() {
             icon: <BarChart className=" text-secondary" />,
             stat: "83%",
             desc: "of consumers are confused by food ingredient labels",
-            source: "fooddive.com",
+            source: "https://www.fooddive.com/news/survey-a-majority-of-consumers-are-confused-by-food-ingredients/445922/",
         },
         {
             icon: <Search className=" text-secondary" />,
-            stat: "60%",
-            desc: "struggle to understand nutrition labels worldwide",
-            source: "vendingmarketwatch.com",
+            stat: "40%",
+            desc: "of consumers check allergen information before purchase",
+            source: "https://vendingmarketwatch.com",
         },
         {
             icon: <AlertTriangle className=" text-secondary" />,
-            stat: "29%",
-            desc: "list chemicals in food as their top food safety concern",
-            source: "chemical-free-life.org",
+            stat: "33%",
+            desc: "of Indian consumers check ingredient information on food labels.",
+            source: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11108719/",
         },
     ]
 
     return (
-        <div className='bg-lightbg w-full px-10 mb-64 flex flex-col justify-center items-center gap-15'>
+        <div className='bg-lightbg w-full px-10  flex flex-col justify-center items-center gap-15 '>
 
-            <div>
-                <p className=' font-bold text-6xl '>Why LabelX ? </p>
-            </div>
+            <motion.div
+                initial={{ filter: "blur(2px)", opacity: 0, y: 100 }}
+                whileInView={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+                transition={{ duration: 1 }}
+                viewport={{ once: true }}
+            >
+                <p className='font-bold text-6xl'>Did You Know?</p>
+            </motion.div>
 
-                <div className='flex justify-center items-center gap-10 '>
-                    {data.map((info, idx) => (
-                        <div key={idx}>
-                            <Infoboxes fact={info} />
-                        </div>
-                    ))}
-                </div>
+            <motion.div
+                initial={{ filter: "blur(2px)", opacity: 0, y: 100 }}
+                whileInView={{ filter: "blur(0px)", opacity: 1, y: 0 }}
+                transition={{ duration: 1.4 }}
+                viewport={{ once: true }}
+                className='flex justify-center items-center gap-10 '>
+                {data.map((info, idx) => (
+                    <div key={idx}>
+                        <Infoboxes fact={info} />
+                    </div>
+                ))}
+            </motion.div>
 
         </div>
     )

@@ -13,6 +13,7 @@
   --color-hoverColor: #e8e8e8;
 }
 
+
 @layer utilities {
 
     @keyframes fade-in-left {
@@ -71,4 +72,5 @@
     .animate-fade-in-bottom {
       animation: fade-in-bottom 1s ease-in-out; 
     }
+
   }
