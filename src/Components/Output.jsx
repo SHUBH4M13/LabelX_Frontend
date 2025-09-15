@@ -3,7 +3,7 @@ import React from 'react'
 export default function Output({ tableData }) {
 
     return (
-        <div className='w-full max-w-4xl border-2 border-white bg-white rounded-xl overflow-hidden shadow-lg'>
+        <div className='w-full border-2 border-white bg-white rounded-xl overflow-hidden shadow-lg'>
             <table className='w-full'>
                 <thead className='bg-red-700/30'>
                     <tr>
@@ -25,10 +25,10 @@ export default function Output({ tableData }) {
                             <td className='px-6 py-4 whitespace-nowrap text-sm text-amber-800'>
                                 {data.Ingredient}
                             </td>
-                            <td className='py-4 whitespace-nowrap px-6 text-sm text-amber-800'>
+                            <td className='px-6 py-4 whitespace-nowrap text-sm text-amber-800'>
                                 {data.SideEffects}
                             </td>
-                            <td className='py-4 whitespace-nowrap text-sm text-amber-800'>
+                            <td className='px-6 py-4 whitespace-nowrap text-sm text-amber-800'>
                                 {data.BannedIn}
                             </td>
                         </tr>
