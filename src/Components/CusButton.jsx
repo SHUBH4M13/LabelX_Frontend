@@ -20,6 +20,6 @@ export default function CusButton({ text, onClick, mode = "dark" }) {
       onClick={onClick}
       className={classes}>
       {text}
-    </button >
+    </button>
   )
 }

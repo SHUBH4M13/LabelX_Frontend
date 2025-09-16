@@ -7,7 +7,7 @@ import ScanSection from "../Components/ScanSection"
 
 export default function Home() {
     return (
-        <div className=' flex flex-col items-center justify-center' >
+        <div className=' font-sans flex flex-col items-center justify-center' >
             <div className=' w-full '>
                 <Navbar />
             </div>
