@@ -1,5 +1,5 @@
 import React from 'react'
-import FormBox from "../Components/FormBox"
+import Signup from "../Components/Signup"
 import Confusion from "../assets/Confusion.png"
 
 export default function FormPage() {
@@ -8,7 +8,7 @@ export default function FormPage() {
 
 
             <div>
-                <FormBox />
+                <Signup />
             </div>
 
             <div>

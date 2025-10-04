@@ -1,9 +1,56 @@
-import React from 'react'
 import { useNavigate } from 'react-router'
 import CusButton from './CusButton'
+import axios from 'axios';
+import { useState } from 'react';
 
-export default function FormBox() {
+export default function Signup() {
+
     const navigate = useNavigate();
+
+    const [Data, setData] = useState({
+        fullName: '',
+        email: '',
+        password: '',
+        allergy: [],
+        disease: []
+    })
+
+    const [Error , setError] = useState('');
+    const [loading , setloading] = useState(false);
+
+    async function handleSignup() {
+        console.log("button clicked");
+        const url = import.meta.env.VITE_BACKEND_URL + `/signup`
+        const res = await axios.post( url , Data )
+        try {
+            if( res.status === 201 ){
+                navigate('/otp')
+            } else {
+                setError(res.data.message)  
+            }
+        } catch (error) {
+            setError(res.data.message)
+        }
+    }
+
+    const handleChange = (e) => {
+        const { name, value } = e.target
+        setData((prev) => ({
+            ...prev,
+            [name]: value,
+        }))
+    };
+
+    const handleArrayChange = (field, value) => {
+        setData((prev) => {
+            const arr = prev[field];
+            return arr.includes(value)
+                ? { ...prev, [field]: arr.filter((item) => item !== value) }
+                : { ...prev, [field]: [...arr, value] };
+        });
+    };
+
+
     return (
         <>
             <div className='text-center mb-1'>
@@ -19,6 +66,9 @@ export default function FormBox() {
                         className='border-primary/30 bg-primaryFore border-2 w-full rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 text-textcolor placeholder-textcolor/50'
                         type="text"
                         placeholder="Enter your full name"
+                        name='fullName'
+                        value={Data.fullName}
+                        onChange={handleChange}
                     />
                 </div>
 
@@ -28,6 +78,9 @@ export default function FormBox() {
                         className='border-primary/30 bg-primaryFore border-2 w-full rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 text-textcolor placeholder-textcolor/50'
                         type="email"
                         placeholder="Enter your email"
+                        name='email'
+                        value={Data.email}
+                        onChange={handleChange}
                     />
                 </div>
 
@@ -37,6 +90,9 @@ export default function FormBox() {
                         className='border-primary/30 bg-primaryFore border-2 w-full rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 text-textcolor placeholder-textcolor/50'
                         type="password"
                         placeholder="Create a password"
+                        name='password'
+                        value={Data.password}
+                        onChange={handleChange}
                     />
                 </div>
 
@@ -53,30 +109,45 @@ export default function FormBox() {
 
                     <div>
                         <label htmlFor="accountType" className='mb-2 text-sm font-semibold text-secondaryFore'>Select any dieases if applicable</label>
-                        <select
-                            id="accountType"
-                            className='border-primary/30 bg-primaryFore border-2 w-full rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 text-textcolor cursor-pointer'
+                        {/* <select
+                            id="disease"
+                            name="disease"
+                            multiple
+                            value={Data.disease}
+                            onChange={(e) => {
+                                const selected = Array.from(e.target.selectedOptions, (option) => option.value);
+                                setData((prev) => ({
+                                    ...prev,
+                                    disease: selected,
+                                }));
+                            }}
+                            className="border-primary/30 bg-primaryFore border-2 w-full rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 text-textcolor cursor-pointer"
                         >
-                            <option value="">Select any dieases if applicable</option>
-                            <option value="">Diabetes</option>
-                            <option value="">Kidney Problem</option>
-                            <option value="">Liver Issues</option>
-                        </select>
+                            <option value="Diabetes">Diabetes</option>
+                            <option value="Kidney Problem">Kidney Problem</option>
+                            <option value="Liver Issues">Liver Issues</option>
+                        </select> */}
                     </div>
 
                     <div>
                         <label htmlFor="accountType" className='mb-2 text-sm font-semibold text-secondaryFore'>Any Allergy</label>
-                        <select
-                            id="accountType"
-                            className='border-primary/30 bg-primaryFore border-2 w-full rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 text-textcolor cursor-pointer'
+                        {/* <select
+                            name="allergy"
+                            multiple
+                            value={Data.allergy}
+                            onChange={handleArrayChange}
+                            className="border-primary/30 bg-primaryFore border-2 w-full rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 text-textcolor cursor-pointer h-32"
                         >
-                            <option value="">Select if you are allergic to something</option>
-                            <option value="">wheat</option>
-                            <option value="">Milk</option>
-                            <option value="">Soy</option>
-                            <option value="">eggs</option>
-                            <option value="">Peanuts</option>
-                        </select>
+                            <option value="wheat">Wheat</option>
+                            <option value="milk">Milk</option>
+                            <option value="soy">Soy</option>
+                            <option value="eggs">Eggs</option>
+                            <option value="peanuts">Peanuts</option>
+                        </select> */}
+
+                        <div className="mt-4 text-sm text-gray-700">
+                            <strong>Selected allergies:</strong> {Data.allergy.join(", ") || "None"}
+                        </div>
                     </div>
 
                 </div>
@@ -84,7 +155,7 @@ export default function FormBox() {
 
                 <div className='w-full mt-4 flex justify-center items-center'>
                     <CusButton
-                        onClick={ () => { navigate("/") }}
+                        onClick={handleSignup}
                         text={"Create Account"}
                     />
                 </div>
