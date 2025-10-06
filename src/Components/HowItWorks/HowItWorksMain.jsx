@@ -33,7 +33,7 @@ export default function HowItWorksMain() {
                 <p className=' font-bold text-5xl '>How LabelX Works</p>
             </div>
 
-            <div className='flex justify-between items-center gap-5 '>
+            <div className='flex justify-around items-center gap-5 '>
 
                 <div className=' w-1/2'>
                     <img 

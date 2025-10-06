@@ -2,13 +2,14 @@ import React, { useState } from 'react'
 import AnimatedBorderCard from './AnimatedBorderCard'
 import CusButton from './CusButton'
 import axios from 'axios'
+import ScanResults from './Result/ScanResults'
 
 export default function ScanSection() {
 
     const [selectedFile, setselectedFile] = useState(null)
+    const [Data, setData] = useState(null)
 
     async function HandleSubmit() {
-
 
         if (!selectedFile) {
             alert("Please select an image")
@@ -26,9 +27,14 @@ export default function ScanSection() {
                     Authorization: `Bearer ${token}`,
                     "Content-Type": "multipart/form-data"
                 }
-            }) //send token too after testing
+            }) 
 
-            console.log(res.data);
+            console.log(res.data.AIresponse);
+            // Store the response data in state
+            setData({
+                AIresponse: res.data.AIresponse,
+                ingredientInfo: res.data.ingredientInfo
+            });
         } catch (error) {
             console.log(error);
         }
@@ -51,6 +57,11 @@ export default function ScanSection() {
             <CusButton
                 onClick={HandleSubmit}
                 text={"Scan now"} />
+
+
+            {
+                Data !== null && <ScanResults AIresponse={Data.AIresponse} ingredientInfo={Data.ingredientInfo} />
+            }  
 
         </div>
     )

@@ -33,6 +33,7 @@ export default function AnimatedBorderCard({setselectedFile}) {
       const reader = new FileReader();
       reader.onload = (e) => {
         setPreview(e.target.result); 
+        setUploadedImage({ url: e.target.result, name: file.name, size: file.size });
         setselectedFile(file)
       };
       reader.readAsDataURL(file);
@@ -52,6 +53,7 @@ export default function AnimatedBorderCard({setselectedFile}) {
 
   const removeImage = () => {
     setUploadedImage(null);
+    setPreview(null);
     if (fileInputRef.current) {
       fileInputRef.current.value = '';
     }
