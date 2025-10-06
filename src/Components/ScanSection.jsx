@@ -20,15 +20,17 @@ export default function ScanSection() {
 
         try {
             const url = import.meta.env.VITE_BACKEND_URL + '/upload'
-            const res = await axios.post(url, formdata) //send token too after testing
+            const token = localStorage.getItem(`token`)
+            const res = await axios.post(url, formdata , {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "multipart/form-data"
+                }
+            }) //send token too after testing
 
-            console.log(res.data.ocrText);
-
-
-            alert("Image uploaded successfully");
+            console.log(res.data);
         } catch (error) {
-            console.error(error);
-            alert("Upload failed");
+            console.log(error);
         }
     }
 

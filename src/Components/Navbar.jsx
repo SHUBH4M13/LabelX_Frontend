@@ -17,6 +17,7 @@ export default function Navbar() {
         <div>
             <CusButton 
             onClick={ () => { navigate("/signup")}}
+            wid={150}
             text={"Sign In"} />
         </div>
     </div>

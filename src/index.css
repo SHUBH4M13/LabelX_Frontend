@@ -1,16 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
+
 @theme {
-  --font-sans: "Roboto", sans-serif;
-  --color-primary: #644a40;
+  --font-inter: 'Inter', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+  --color-primary: #009966;
   --color-primaryFore : #ffffff;
-  --color-secondary: #ffdfb5;
-  --color-secondaryFore: #582d1d;
-  --color-lightbg: #f9f9f9;
-  --color-darkbg: #111111;
-  --color-textcolor: #202020;
-  --color-hoverColor: #e8e8e8;
+  --color-textblue : #4b5563;
+  --color-hoverColor: #047857;
+  --color-darkblue: #111827;
 }
 
 

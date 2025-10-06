@@ -24,7 +24,9 @@ export default function Signup() {
         const res = await axios.post( url , Data )
         try {
             if( res.status === 201 ){
-                navigate('/otp')
+                const token = res.data.token
+                localStorage.setItem(`token` , token)
+                navigate('/')
             } else {
                 setError(res.data.message)  
             }
