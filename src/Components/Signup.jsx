@@ -11,28 +11,45 @@ export default function Signup() {
         fullName: '',
         email: '',
         password: '',
+        confirmpassword: '',
         allergy: [],
         disease: []
     })
 
-    const [Error , setError] = useState('');
-    const [loading , setloading] = useState(false);
+    const [Error, setError] = useState('');
+    const [loading, setloading] = useState(false);
 
     async function handleSignup() {
-        console.log("button clicked");
-        const url = import.meta.env.VITE_BACKEND_URL + `/signup`
-        const res = await axios.post( url , Data )
-        try {
-            if( res.status === 201 ){
-                const token = res.data.token
-                localStorage.setItem(`token` , token)
-                navigate('/')
-            } else {
-                setError(res.data.message)  
-            }
-        } catch (error) {
-            setError(res.data.message)
-        }
+            navigate("/otp")
+        // if (!Data.fullName || !Data.email || !Data.password || !Data.confirmpassword) {
+        //     setError("All fields are required.");
+        //     return; 
+        // }
+
+        // if (Data.password != Data.confirmpassword) {
+        //     setError("Password do not match")
+        //     return
+        // }
+
+        // const url = import.meta.env.VITE_BACKEND_URL + `/signup`
+        // setloading(true)
+        // setError(" ")
+
+        // try {
+        //     const res = await axios.post(url, Data)
+
+        //     if (res.status === 201) {
+        //         const token = res.data.token
+        //         localStorage.setItem(`token`, token)
+        //         navigate('/')
+        //     } else {
+        //         setError(res.data.message || "Something went wrong")
+        //     }
+        // } catch (error) {
+        //     setError(error.response.data.message)
+        // } finally {
+        //     setloading(false);
+        // }
     }
 
     const handleChange = (e) => {
@@ -43,14 +60,14 @@ export default function Signup() {
         }))
     };
 
-    const handleArrayChange = (field, value) => {
-        setData((prev) => {
-            const arr = prev[field];
-            return arr.includes(value)
-                ? { ...prev, [field]: arr.filter((item) => item !== value) }
-                : { ...prev, [field]: [...arr, value] };
-        });
-    };
+    // const handleArrayChange = (field, value) => {
+    //     setData((prev) => {
+    //         const arr = prev[field];
+    //         return arr.includes(value)
+    //             ? { ...prev, [field]: arr.filter((item) => item !== value) }
+    //             : { ...prev, [field]: [...arr, value] };
+    //     });
+    // };
 
 
     return (
@@ -60,7 +77,7 @@ export default function Signup() {
                 <p className='text-textcolor/70 text-sm'>Fill in your details to get started</p>
             </div>
 
-            <div className='flex w-[550px] flex-col items gap-6 bg-white shadow-xl hover:shadow-black/40 justify-center items-center h-[650px] border-white/10 duration-300 border-2 rounded-3xl px-8 '>
+            <div className='md:w-[600px] lg:h-[600px] flex flex-col items gap-6 bg-white shadow-xl hover:shadow-primary/40 justify-center items-center border-white/10 duration-300 border-2 rounded-3xl px-8 py-3 '>
 
                 <div className='flex flex-col w-full'>
                     <label className='mb-2 text-sm font-semibold text-primary'>Full Name</label>
@@ -69,6 +86,7 @@ export default function Signup() {
                         type="text"
                         placeholder="Enter your full name"
                         name='fullName'
+                        required
                         value={Data.fullName}
                         onChange={handleChange}
                     />
@@ -81,6 +99,7 @@ export default function Signup() {
                         type="email"
                         placeholder="Enter your email"
                         name='email'
+                        required
                         value={Data.email}
                         onChange={handleChange}
                     />
@@ -93,6 +112,7 @@ export default function Signup() {
                         type="password"
                         placeholder="Create a password"
                         name='password'
+                        required
                         value={Data.password}
                         onChange={handleChange}
                     />
@@ -103,55 +123,12 @@ export default function Signup() {
                     <input
                         className='border-primary/30 bg-primaryFore border-2 w-full rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 text-textcolor placeholder-textcolor/50'
                         type="password"
+                        name='confirmpassword'
                         placeholder="Confirm your password"
+                        required
+                        value={Data.confirmpassword}
+                        onChange={handleChange}
                     />
-                </div>
-
-                <div className='flex justify-around  w-full gap-5'>
-
-                    <div>
-                        <label htmlFor="accountType" className='mb-2 text-sm font-semibold text-secondaryFore'>Select any dieases if applicable</label>
-                        {/* <select
-                            id="disease"
-                            name="disease"
-                            multiple
-                            value={Data.disease}
-                            onChange={(e) => {
-                                const selected = Array.from(e.target.selectedOptions, (option) => option.value);
-                                setData((prev) => ({
-                                    ...prev,
-                                    disease: selected,
-                                }));
-                            }}
-                            className="border-primary/30 bg-primaryFore border-2 w-full rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 text-textcolor cursor-pointer"
-                        >
-                            <option value="Diabetes">Diabetes</option>
-                            <option value="Kidney Problem">Kidney Problem</option>
-                            <option value="Liver Issues">Liver Issues</option>
-                        </select> */}
-                    </div>
-
-                    <div>
-                        <label htmlFor="accountType" className='mb-2 text-sm font-semibold text-secondaryFore'>Any Allergy</label>
-                        {/* <select
-                            name="allergy"
-                            multiple
-                            value={Data.allergy}
-                            onChange={handleArrayChange}
-                            className="border-primary/30 bg-primaryFore border-2 w-full rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 text-textcolor cursor-pointer h-32"
-                        >
-                            <option value="wheat">Wheat</option>
-                            <option value="milk">Milk</option>
-                            <option value="soy">Soy</option>
-                            <option value="eggs">Eggs</option>
-                            <option value="peanuts">Peanuts</option>
-                        </select> */}
-
-                        <div className="mt-4 text-sm text-gray-700">
-                            <strong>Selected allergies:</strong> {Data.allergy.join(", ") || "None"}
-                        </div>
-                    </div>
-
                 </div>
 
 
@@ -162,14 +139,25 @@ export default function Signup() {
                     />
                 </div>
 
-                <p className='text-xs text-textcolor/60 text-center'>
-                    Already have an account? <span className='text-primary font-semibold cursor-pointer hover:text-primary/80'>Sign in</span>
+
+                {Error && (
+                    <div className="w-full bg-red-100 border border-red-300 text-red-700 px-4 py-3 rounded-md shadow-sm my-2 text-center">
+                        <p className="text-sm">{Error}</p>
+                    </div>
+                )}
+
+                <p className='text-s text-textcolor/60 text-center'>
+                    Already have an account? 
+                    <span
+                    onClick={() => {
+                        navigate("/login")
+                    }}
+                    className='text-primary font-semibold cursor-pointer hover:text-primary/80'> Sign in</span>
                 </p>
 
             </div>
 
         </>
-
 
     )
 }

@@ -1,7 +1,8 @@
 import { createBrowserRouter , RouterProvider  } from "react-router"
 
 import Home from "./pages/Home"
-import FormPage from "./pages/FormPage"
+import SignUp from "./pages/SignUp"
+import OtpPage from "./pages/OtpPage"
 
 
 const router = createBrowserRouter([
@@ -11,7 +12,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/signup",
-    element: <FormPage/>
+    element: <SignUp/>
+  },
+  {
+    path: "/otp",
+    element: <OtpPage/>
   },
 ])
 

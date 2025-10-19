@@ -10,7 +10,7 @@ export default function Carasouel() {
             <div className=' bg-white py-16 px-18'>
 
                 <div className='text-center font-bold text-5xl'>
-                    <h3>Global Global Standards We Follow</h3>
+                    <h3>Global Standards We Follow</h3>
                 </div>
 
                 <div className=' flex justify-around items-center mt-6'>
