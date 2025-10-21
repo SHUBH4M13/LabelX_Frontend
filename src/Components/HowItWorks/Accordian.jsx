@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ArrowDown, ArrowUp } from 'lucide-react'
+import { ChevronUp, ChevronDown } from 'lucide-react'
 
 export default function DropDown({ items }) {
 
@@ -19,29 +19,37 @@ export default function DropDown({ items }) {
 
         return <div
 
-          className=' font-medium text-left max-h-[500px] overflow-y-auto font-inter'
+          className='font-medium text-left max-h-[410px] transition-transform duration-500 overflow-y-auto font-inter border-b-1 border-black/10  '
           key={index}>
-
-          <div className=' w-full h-[1px] bg-black/10 '> </div>
 
           <button
             onClick={() => {
               handleToggle(index)
             }}
-            className=' px-4 py-6 flex'>
-            {item.title}
+            className='w-full px-4 py-6 flex items-center justify-between'>
+            
+            <span>{item.title}</span>
+
+            {OpenIndex === index ? (
+              <ChevronUp className="w-5 h-5 text-primary transition-transform duration-500 rotate-y-180" />
+            ) : (
+              <ChevronDown className="w-5 h-5 text-gray-500 transition-transform duration-500 rotate-y-0" />
+            )}
 
           </button>
 
           
-          {OpenIndex === index && <div className='py-6 max-w-[350px] text-gray-700 font-normal'>
-            {item.description}
-          </div>}
-
+          <div
+            className={`overflow-hidden transition-all duration-500 ease-in-out ${
+              OpenIndex === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'
+            }`}
+          >
+            <div className="px-4 pb-4 text-gray-700 text-[14px] leading-relaxed">
+              {item.description}
+            </div>
+          </div>
         </div>
       })}
-
-      <div className=' w-full h-[1px] bg-black/10'> </div>
     </div>
   )
 }

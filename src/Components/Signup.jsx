@@ -21,35 +21,35 @@ export default function Signup() {
 
     async function handleSignup() {
             navigate("/otp")
-        // if (!Data.fullName || !Data.email || !Data.password || !Data.confirmpassword) {
-        //     setError("All fields are required.");
-        //     return; 
-        // }
+        if (!Data.fullName || !Data.email || !Data.password || !Data.confirmpassword) {
+            setError("All fields are required.");
+            return; 
+        }
 
-        // if (Data.password != Data.confirmpassword) {
-        //     setError("Password do not match")
-        //     return
-        // }
+        if (Data.password != Data.confirmpassword) {
+            setError("Password do not match")
+            return
+        }
 
-        // const url = import.meta.env.VITE_BACKEND_URL + `/signup`
-        // setloading(true)
-        // setError(" ")
+        const url = import.meta.env.VITE_BACKEND_URL + `/signup`
+        setloading(true)
+        setError(" ")
 
-        // try {
-        //     const res = await axios.post(url, Data)
+        try {
+            const res = await axios.post(url, Data)
 
-        //     if (res.status === 201) {
-        //         const token = res.data.token
-        //         localStorage.setItem(`token`, token)
-        //         navigate('/')
-        //     } else {
-        //         setError(res.data.message || "Something went wrong")
-        //     }
-        // } catch (error) {
-        //     setError(error.response.data.message)
-        // } finally {
-        //     setloading(false);
-        // }
+            if (res.status === 201) {
+                const token = res.data.token
+                localStorage.setItem(`token`, token)
+                navigate('/')
+            } else {
+                setError(res.data.message || "Something went wrong")
+            }
+        } catch (error) {
+            setError(error.response.data.message)
+        } finally {
+            setloading(false);
+        }
     }
 
     const handleChange = (e) => {
@@ -106,7 +106,7 @@ export default function Signup() {
                 </div>
 
                 <div className='flex flex-col w-full'>
-                    <label className='mb-2 text-sm font-semibold text-secondaryFore'>Password</label>
+                    <label className='mb-2 text-sm font-semibold text-primary'>Password</label>
                     <input
                         className='border-primary/30 bg-primaryFore border-2 w-full rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 text-textcolor placeholder-textcolor/50'
                         type="password"
@@ -119,7 +119,7 @@ export default function Signup() {
                 </div>
 
                 <div className='flex flex-col w-full'>
-                    <label className='mb-2 text-sm font-semibold text-secondaryFore'>Confirm Password</label>
+                    <label className='mb-2 text-sm font-semibold text-primary '>Confirm Password</label>
                     <input
                         className='border-primary/30 bg-primaryFore border-2 w-full rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-200 text-textcolor placeholder-textcolor/50'
                         type="password"

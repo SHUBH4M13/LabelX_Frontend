@@ -33,15 +33,15 @@ export default function HowItWorksMain() {
                 <p className=' font-bold text-5xl '>How LabelX Works</p>
             </div>
 
-            <div className='flex justify-around items-center gap-5 '>
+            <div className='flex justify-between items-center gap-3 '>
 
-                <div className=' w-1/2'>
+                <div className='w-1/2'>
                     <img 
-                    className=' w-[700px]'
+                    className=' w-[610px]'
                     src={Confusion} alt="" />
                 </div>
 
-                <div className=' w-1/2 overflow-hidden' >
+                <div className='w-1/2 max-h-[410px] overflow-hidden mt-4 px-14'>
                     <Accordian items={items} />
                 </div>
 
