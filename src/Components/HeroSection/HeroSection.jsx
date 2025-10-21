@@ -4,15 +4,15 @@ import Grocery from "../../assets/Grocery.png"
 
 export default function HeroSection() {
   return (
-    <div className=' flex justify-between min-h-screen px-32 items-center bg-[linear-gradient(162deg,rgba(0, 153, 102, 0.8) 0%, rgba(255, 255, 255, 0) 50%)]'>
+    <div className='flex flex-col-reverse justify-evenly sm:flex-row sm:justify-between sm:items-center  min-h-screen px-15 sm:px-32 '>
 
-      <div className=' animate-fade-in-left'>
+      <div className=''>
         <LeftText />
       </div>
 
-      <div className=' animate-fade-in-right'>
+      <div>
           <img 
-          className=' w-[450px] rounded-4xl '
+          className='  w-[450px] rounded-4xl '
           src={Grocery} alt="image" />
       </div>
 

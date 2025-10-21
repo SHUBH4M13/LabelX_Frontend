@@ -14,15 +14,15 @@ export default function Home() {
                 <Navbar />
             </div>
 
-            <div>
+             <div>
                 <HeroSection />
             </div>
 
-            <div className=' w-full  bg-lightbg'>
+            <div className='w-full  bg-lightbg'>
                 <WhyLabelXSection />
             </div>
 
-            <div>
+            {/*  <div>
                 <HowItWorksMain />
             </div>
             
@@ -33,7 +33,7 @@ export default function Home() {
             <div className=' flex flex-col gap-10 py-10 justify-center items-center w-full bg-lightbg '>
                 <Tag text={"Try Scanning"} />
                 <ScanSection />
-            </div>
+            </div> */}
 
         </div>
     )
