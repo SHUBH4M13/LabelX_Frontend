@@ -1,7 +1,6 @@
 import React from 'react'
 import DataBox from './DataBox';
 import { AlertTriangle, BarChart, Search } from "lucide-react";
-import { motion } from 'motion/react'
 
 export default function WhyLabelXSection() {
 
@@ -27,29 +26,20 @@ export default function WhyLabelXSection() {
     ]
 
     return (
-        <div className='bg-lightbg w-full px-16 flex flex-col justify-center items-center gap-15 '>
+        <div className='bg-lightbg w-full px-12 py-12 flex flex-col justify-center items-center gap-15 '>
 
-            <motion.div
-                initial={{ filter: "blur(2px)", opacity: 0, y: 100 }}
-                whileInView={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-                transition={{ duration: 1 }}
-                viewport={{ once: true }}
-            >
+            <div>
                 <p className='font-bold text-[40px] sm:text-6xl'>Did You Know?</p>
-            </motion.div>
+            </div>
 
-            <motion.div
-                initial={{ filter: "blur(2px)", opacity: 0, y: 100 }}
-                whileInView={{ filter: "blur(0px)", opacity: 1, y: 0 }}
-                transition={{ duration: 1.4 }}
-                viewport={{ once: true }}
-                className='flex flex-col sm:flex-row justify-center items-center gap-10 '>
-                {data.map((info, idx) => (
-                    <div key={idx}>
-                        <DataBox fact={info} />
-                    </div>
-                ))}
-            </motion.div>
+                <div
+                    className='flex flex-col lg:flex-row justify-center items-center gap-10'>
+                    {data.map((info, idx) => (
+                        <div key={idx}>
+                            <DataBox fact={info} />
+                        </div>
+                    ))}
+            </div>
 
         </div>
     )

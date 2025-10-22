@@ -19,14 +19,14 @@ export default function DropDown({ items }) {
 
         return <div
 
-          className='font-medium text-left max-h-[410px] transition-transform duration-500 overflow-y-auto font-inter border-b-1 border-black/10  '
+          className='font-medium text-left max-h-[410px] transition-transform duration-500 overflow-y-auto font-inter border-b-1 border-black/10 '
           key={index}>
 
           <button
             onClick={() => {
               handleToggle(index)
             }}
-            className='w-full px-4 py-6 flex items-center justify-between'>
+            className='w-full lg:px-4 py-6 flex items-center justify-between'>
             
             <span>{item.title}</span>
 

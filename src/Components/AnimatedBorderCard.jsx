@@ -68,7 +68,7 @@ export default function AnimatedBorderCard({setselectedFile}) {
   };
 
   return (
-    <div className='w-[500px] h-[500px] bg-white border-dashed border-2 hover:border-primary border-gray-300 rounded-2xl duration-300 '>
+    <div className='w-[350px] h-[350px] md:w-[500px] md:h-[500px] bg-white border-dashed border-2 hover:border-primary border-gray-300 rounded-2xl duration-300 '>
       <div className='h-full overflow-hidden p-2 relative'>
         <div className=' h-full bg-white rounded-xl'>
           <div className='h-full p-.5 '>

@@ -22,18 +22,18 @@ export default function Home() {
                 <WhyLabelXSection />
             </div>
 
-            {/*  <div>
+            <div>
                 <HowItWorksMain />
             </div>
             
-            <div>
+            {/*  <div>
                 <Carasouel />
-            </div>
+            </div> */}
 
             <div className=' flex flex-col gap-10 py-10 justify-center items-center w-full bg-lightbg '>
                 <Tag text={"Try Scanning"} />
                 <ScanSection />
-            </div> */}
+            </div> 
 
         </div>
     )
