@@ -3,6 +3,7 @@ import CusButton from './CusButton'
 import axios from 'axios';
 import { useState } from 'react';
 
+
 export default function Signup() {
 
     const navigate = useNavigate();
@@ -20,10 +21,10 @@ export default function Signup() {
     const [loading, setloading] = useState(false);
 
     async function handleSignup() {
-            navigate("/otp")
+        navigate("/otp")
         if (!Data.fullName || !Data.email || !Data.password || !Data.confirmpassword) {
             setError("All fields are required.");
-            return; 
+            return;
         }
 
         if (Data.password != Data.confirmpassword) {
@@ -59,6 +60,15 @@ export default function Signup() {
             [name]: value,
         }))
     };
+
+    async function handleGoogleSignUp(){
+        try {
+            const url = import.meta.env.VITE_BACKEND_URL + '/auth/google'
+            window.location.href = url;
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     // const handleArrayChange = (field, value) => {
     //     setData((prev) => {
@@ -146,14 +156,22 @@ export default function Signup() {
                     </div>
                 )}
 
+                <div className='0 flex justify-center items-center '>
+                        <button 
+                        onClick={handleGoogleSignUp}
+                        className=' px-12 py-1 cursor-pointer  text-center border-1 border-gray-500/20 '>Sign in with Google</button>
+                </div>
+
                 <p className='text-s text-textcolor/60 text-center'>
-                    Already have an account? 
+                    Already have an account?
                     <span
-                    onClick={() => {
-                        navigate("/login")
-                    }}
-                    className='text-primary font-semibold cursor-pointer hover:text-primary/80'> Sign in</span>
+                        onClick={() => {
+                            navigate("/login")
+                        }}
+                        className='text-primary font-semibold cursor-pointer hover:text-primary/80'> Sign in</span>
                 </p>
+
+
 
             </div>
 

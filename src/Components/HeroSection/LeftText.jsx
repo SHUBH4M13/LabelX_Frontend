@@ -1,40 +1,61 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import CusButton from '../CusButton'
 import TransparentButton from "../TransparentButton"
+import { gsap } from 'gsap'
 
 export default function LeftText() {
-    return (
-        <div className='w-full md:w-[550px] flex flex-col gap-10 '>
+  const containerRef = useRef(null);
 
-            <div className='text-center lg:text-left text-[36px] md:text-[46px] lg:text-[64px] font-bold'>
-                <div className=''>
-                    <span>Scan.</span>
-                    <span> Decode.</span>
-                </div>
-                <div className=' md:mt-[-14px]'>
-                    <span className='text-primary'>Eat.</span>
-                    <span className='text-primary'> Safe.</span>
-                </div>
-            </div>
+  // useEffect(() => {
+  //   const texts = gsap.utils.toArray(containerRef.current.querySelectorAll('.anim-text'))
 
-            <div className='text-[20px] text-textblue text-center lg:text-left font-light'>
-                <p>AI-powered food label scanning that instantly identifies harmful ingredients, allergens, and safety warnings in any packaged food.</p>
-            </div>
+  //   const tl = gsap.timeline();
 
-             <div className='flex gap-6 lg:gap-10 items-center justify-center lg:justify-start '>
+  //   tl.fromTo(texts, {
+  //     x: -200,
+  //     opacity: 0,
+  //   } , {
+  //     x: 0,
+  //     opacity: 1,
+  //     duration: 1,
+  //     stagger: 0.5,
+  //     ease: "power2.out"
+  //   }) 
 
-                <div>
-                    <CusButton 
-                    text={"Try Now"}/>
-                </div>
+  //   tl.fromTo('.herodesc' ,{
+  //       y: 25,
+  //       opacity: 0,
+  //     } , {
+  //       y: 0,
+  //       opacity: 1,
+  //       duration: 1,
+  //       ease: "power1.out"
+  //     } )
+  // }, []);
 
-                <div>
-                    <TransparentButton 
-                    text={"How it works?"}
-                    />
-                </div>
-
-            </div>
+  return (
+    <div ref={containerRef} className='w-full md:w-[550px] flex flex-col gap-10'>
+      <div className='text-center lg:text-left text-[36px] md:text-[46px] lg:text-[64px] font-bold'>
+        <div>
+          <span className='anim-text'>Scan.</span>
+          <span className='anim-text'> Decode.</span>
         </div>
-    )
+        <div className='md:mt-[-14px]'>
+          <span className='anim-text text-primary'>Eat.</span>
+          <span className='anim-text text-primary'> Safe.</span>
+        </div>
+      </div>
+
+      <div className='text-[20px] text-textblue text-center lg:text-left font-light'>
+        <p className='herodesc'>
+          AI-powered food label scanning that instantly identifies harmful ingredients, allergens, and safety warnings in any packaged food.
+        </p>
+      </div>
+
+      <div className='flex gap-6 lg:gap-10 items-center justify-center lg:justify-start'>
+        <CusButton text={"Try Now"} />
+        <TransparentButton text={"How it works?"} />
+      </div>
+    </div>
+  );
 }
