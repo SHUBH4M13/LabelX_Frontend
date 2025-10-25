@@ -17,7 +17,7 @@ export default function OtpPage() {
   useEffect(() => {
     if (ResendTimer > 0) {
       const Timer = setTimeout(() => { setResendTimer(ResendTimer - 1) }, 1000)
-      return () => clearTimeout = { Timer }
+      return () => clearTimeout(Timer);
     } else {
       setcanResend(true)
     }
@@ -53,7 +53,7 @@ export default function OtpPage() {
     seterror('')
 
     if (index < 3) {
-      inputRefs.current[index + 1]?.focus
+      inputRefs.current[index + 1]?.focus()
     }
 
   }
@@ -123,7 +123,7 @@ export default function OtpPage() {
               key={index}
               inputMode='numeric'
               maxLength={1}
-              value={digit}
+              value={Otp[index]}
               ref={el => inputRefs.current[index] = el}
               onKeyDown={(e) => handleKeyDown(index, e)}
               onChange={(e) => handleInputChange(index, e.target.value.replace(/\D/g, ''))}
@@ -137,10 +137,12 @@ export default function OtpPage() {
             text={"Verify OTP"} />
         </div>
 
-        <div>
-          <p className=' text-[14px]'>Didn't receive the code?</p>
-          <span className=' cursor-pointer text-[14px] hover:underline duration-200 text-primary'>Resend OTP</span>
-        </div>
+        <span
+          onClick={handleResend}
+          className=' cursor-pointer text-[14px] hover:underline duration-200 text-primary'>
+          Resend OTP {canResend ? '' : `(${ResendTimer}s)`}
+        </span>
+
 
         {error &&
           (
