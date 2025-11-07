@@ -36,7 +36,6 @@ export default function Login() {
             setloading(true);
             const url = import.meta.env.VITE_BACKEND_URL + '/login'
             const res = await axios.post(url, Data)
-            console.log(res)
 
             if (res.status >= 400) {
                 seterror(res.data.msg)

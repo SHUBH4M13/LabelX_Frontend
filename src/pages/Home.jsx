@@ -1,4 +1,4 @@
-import React from 'react'
+import {useEffect} from 'react'
 import HeroSection from '../Components/HeroSection/HeroSection'
 import Navbar from '../Components/Navbar'
 import Tag from "../Components/Tag"
@@ -6,8 +6,10 @@ import WhyLabelXSection from "../Components/WhyLabelXSection"
 import ScanSection from "../Components/ScanSection"
 import Carasouel from '../Components/Carasouel/Carasouel'
 import HowItWorksMain from "../Components/HowItWorks/HowItWorksMain"
+import { useNavigate } from 'react-router'
 
 export default function Home() {
+    
     return (
         <div className=' font-inter flex flex-col' >
             <div>

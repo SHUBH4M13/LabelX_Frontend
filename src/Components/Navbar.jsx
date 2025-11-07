@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { ScanLine } from "lucide-react"
+import { ScanLine, User } from "lucide-react"
 import CusButton from './CusButton'
 import { useNavigate } from 'react-router'
 
 export default function Navbar() {
   const navigate = useNavigate();
-  
-  const [HaveToken, setHaveToken] = useState('')
-  
 
-  useEffect( () => {
+  const [HaveToken, setHaveToken] = useState('')
+
+
+  useEffect(() => {
     const token = (localStorage.getItem('token'))
     setHaveToken(!!token)
   }, [])
@@ -25,14 +25,26 @@ export default function Navbar() {
 
 
       {HaveToken ? (
-        <CusButton
-          onClick={
-            () => {
-              localStorage.removeItem('token')
-              navigate('/login')
-              setHaveToken(false)
-            }}
-          text={"Log Out"} />
+
+        <div className=' flex justify-around items-center gap-5 '>
+          <div>
+            <CusButton
+              onClick={
+                () => {
+                  localStorage.removeItem('token')
+                  navigate('/login')
+                  setHaveToken(false)
+                }}
+              text={"Log Out"} />
+          </div>
+
+          <div>
+              <User 
+              onClick={() => navigate("/profile")}
+              />
+          </div>
+        </div>
+
       ) : (
         <CusButton
           onClick={

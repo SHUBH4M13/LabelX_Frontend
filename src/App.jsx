@@ -5,6 +5,7 @@ import SignUp from "./pages/SignUp"
 import OtpPage from "./pages/OtpPage"
 import Login from "./pages/Login"
 import UserProfile from "./pages/UserProfile"
+import AuthSuccess from "./pages/AuthSuccess"
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
     path: "/profile",
     element: <UserProfile/>
   },
+  {
+    path:"/auth-success/",
+    element: <AuthSuccess/>
+  }
 ])
 
 function App() {
