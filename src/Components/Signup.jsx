@@ -3,7 +3,8 @@ import CusButton from './CusButton'
 import axios from 'axios';
 import { useState } from 'react';
 import googleicon from "../assets/googleicon.svg"
-
+import AllergySelection from "../Components/AllergySelection"
+import DiseaseSelection from "../Components/DiseaseSelection"
 
 export default function Signup() {
 
@@ -22,7 +23,7 @@ export default function Signup() {
     const [loading, setloading] = useState(false);
 
     async function handleSignup() {
-        
+
         if (!Data.fullName || !Data.email || !Data.password || !Data.confirmpassword) {
             setError("All fields are required.");
             return;
@@ -70,15 +71,6 @@ export default function Signup() {
             console.log(error);
         }
     }
-
-    // const handleArrayChange = (field, value) => {
-    //     setData((prev) => {
-    //         const arr = prev[field];
-    //         return arr.includes(value)
-    //             ? { ...prev, [field]: arr.filter((item) => item !== value) }
-    //             : { ...prev, [field]: [...arr, value] };
-    //     });
-    // };
 
 
     return (
@@ -140,6 +132,34 @@ export default function Signup() {
                         value={Data.confirmpassword}
                         onChange={handleChange}
                     />
+                </div>
+
+                <div className="flex flex-col justify-between gap-6 w-full mt-2">
+
+                    <div className="flex-1">
+                        <h3 className="text-primary font-semibold mb-2 text-sm">
+                            Select any allergies (if applicable)
+                        </h3>
+                        <AllergySelection
+                            value={Data.allergy}
+                            onChange={(selected) =>
+                                setData((prev) => ({ ...prev, allergy: selected }))
+                            }
+                        />
+                    </div>
+
+                    <div className="flex-1">
+                        <h3 className="text-primary font-semibold mb-2 text-sm">
+                            Select any diseases or health conditions
+                        </h3>
+                        <DiseaseSelection
+                            value={Data.disease}
+                            onChange={(selected) =>
+                                setData((prev) => ({ ...prev, disease: selected }))
+                            }
+                        />
+                    </div>
+
                 </div>
 
                 {Error && (

@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import SignUp from "./pages/SignUp"
 import OtpPage from "./pages/OtpPage"
 import Login from "./pages/Login"
+import UserProfile from "./pages/UserProfile"
 
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login/>
+  },
+  {
+    path: "/profile",
+    element: <UserProfile/>
   },
 ])
 

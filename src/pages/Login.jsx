@@ -5,7 +5,6 @@ import CusButton from '../Components/CusButton'
 import { useNavigate } from 'react-router'
 import googleicon from "../assets/googleicon.svg"
 
-
 export default function Login() {
 
     const navigate = useNavigate()
@@ -87,6 +86,7 @@ export default function Login() {
                         onChange={handleChange}
                     />
                 </div>
+
 
                 <div className='flex flex-col w-full'>
                     <label className='mb-2 text-sm font-semibold text-primary'>Password</label>
